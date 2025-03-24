@@ -13,17 +13,16 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace Practica
+namespace Practica.pages
 {
     /// <summary>
-    /// Логика взаимодействия для MainWindow.xaml
+    /// Логика взаимодействия для GroupPage.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class GroupPage : Page
     {
-        public MainWindow()
+        public GroupPage()
         {
             InitializeComponent();
-            MainFrame.NavigationService.Navigate(new pages.AuthorizationPage());
         }
     }
 }
