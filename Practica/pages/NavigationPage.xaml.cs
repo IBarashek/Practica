@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Practica.Classes;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -27,6 +28,7 @@ namespace Practica.pages
 
         private void ClickNavigation(object sender, RoutedEventArgs e)
         {
+            
             Button button = sender as Button;
             if (button.Name == "BtnAdd")
             {
