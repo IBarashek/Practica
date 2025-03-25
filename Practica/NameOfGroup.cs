@@ -12,24 +12,18 @@ namespace Practica
     using System;
     using System.Collections.Generic;
     
-    public partial class Group
+    public partial class NameOfGroup
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Group()
+        public NameOfGroup()
         {
-            this.Student1 = new HashSet<Student>();
+            this.Group = new HashSet<Group>();
         }
     
-        public int Id_Group { get; set; }
-        public int Name { get; set; }
-        public Nullable<int> Id_StudentStarosta { get; set; }
-        public int Id_User { get; set; }
         public int Id_NameOfGroup { get; set; }
+        public string NAme { get; set; }
     
-        public virtual NameOfGroup NameOfGroup { get; set; }
-        public virtual Student Student { get; set; }
-        public virtual User User { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Student> Student1 { get; set; }
+        public virtual ICollection<Group> Group { get; set; }
     }
 }

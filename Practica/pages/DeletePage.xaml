@@ -9,6 +9,15 @@
       Title="DeletePage">
 
     <Grid>
-        
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="3*"/>
+            <ColumnDefinition Width="1*"/>
+        </Grid.ColumnDefinitions>
+        <StackPanel Grid.Column="1">
+            <Label Content="Введите номер студента:"/>
+            <TextBox x:Name="TxbNumberOfStudent"/>
+            <Button x:Name="BtnDelete" Content="Удалить" Click="Delete_click"/>
+        </StackPanel>
     </Grid>
 </Page>

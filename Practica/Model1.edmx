@@ -11,9 +11,16 @@
           </Key>
           <Property Name="Id_Group" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Name" Type="int" Nullable="false" />
-          <Property Name="Description" Type="nvarchar" MaxLength="50" />
           <Property Name="Id_StudentStarosta" Type="int" />
           <Property Name="Id_User" Type="int" Nullable="false" />
+          <Property Name="Id_NameOfGroup" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="NameOfGroup">
+          <Key>
+            <PropertyRef Name="Id_NameOfGroup" />
+          </Key>
+          <Property Name="Id_NameOfGroup" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NAme" Type="nvarchar" MaxLength="100" Nullable="false" />
         </EntityType>
         <EntityType Name="Student">
           <Key>
@@ -44,6 +51,18 @@
           <Property Name="Login" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="Password" Type="nvarchar" MaxLength="50" Nullable="false" />
         </EntityType>
+        <Association Name="FK_Group_NameOfGroup">
+          <End Role="NameOfGroup" Type="Self.NameOfGroup" Multiplicity="1" />
+          <End Role="Group" Type="Self.Group" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NameOfGroup">
+              <PropertyRef Name="Id_NameOfGroup" />
+            </Principal>
+            <Dependent Role="Group">
+              <PropertyRef Name="Id_NameOfGroup" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Group_Student">
           <End Role="Student" Type="Self.Student" Multiplicity="0..1" />
           <End Role="Group" Type="Self.Group" Multiplicity="*" />
@@ -82,9 +101,14 @@
         </Association>
         <EntityContainer Name="Хранилище PracticaaModelContainer">
           <EntitySet Name="Group" EntityType="Self.Group" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="NameOfGroup" EntityType="Self.NameOfGroup" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Student" EntityType="Self.Student" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Group_NameOfGroup" Association="Self.FK_Group_NameOfGroup">
+            <End Role="NameOfGroup" EntitySet="NameOfGroup" />
+            <End Role="Group" EntitySet="Group" />
+          </AssociationSet>
           <AssociationSet Name="FK_Group_Student" Association="Self.FK_Group_Student">
             <End Role="Student" EntitySet="Student" />
             <End Role="Group" EntitySet="Group" />
@@ -109,12 +133,21 @@
           </Key>
           <Property Name="Id_Group" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Name" Type="Int32" Nullable="false" />
-          <Property Name="Description" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Id_StudentStarosta" Type="Int32" />
           <Property Name="Id_User" Type="Int32" Nullable="false" />
+          <Property Name="Id_NameOfGroup" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="NameOfGroup" Relationship="Self.FK_Group_NameOfGroup" FromRole="Group" ToRole="NameOfGroup" />
           <NavigationProperty Name="Student" Relationship="Self.FK_Group_Student" FromRole="Group" ToRole="Student" />
           <NavigationProperty Name="User" Relationship="Self.FK_Group_User" FromRole="Group" ToRole="User" />
           <NavigationProperty Name="Student1" Relationship="Self.FK_Student_Group" FromRole="Group" ToRole="Student" />
+        </EntityType>
+        <EntityType Name="NameOfGroup">
+          <Key>
+            <PropertyRef Name="Id_NameOfGroup" />
+          </Key>
+          <Property Name="Id_NameOfGroup" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NAme" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Group" Relationship="Self.FK_Group_NameOfGroup" FromRole="NameOfGroup" ToRole="Group" />
         </EntityType>
         <EntityType Name="Student">
           <Key>
@@ -148,6 +181,18 @@
           <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <NavigationProperty Name="Group" Relationship="Self.FK_Group_User" FromRole="User" ToRole="Group" />
         </EntityType>
+        <Association Name="FK_Group_NameOfGroup">
+          <End Role="NameOfGroup" Type="Self.NameOfGroup" Multiplicity="1" />
+          <End Role="Group" Type="Self.Group" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NameOfGroup">
+              <PropertyRef Name="Id_NameOfGroup" />
+            </Principal>
+            <Dependent Role="Group">
+              <PropertyRef Name="Id_NameOfGroup" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Group_Student">
           <End Role="Student" Type="Self.Student" Multiplicity="0..1" />
           <End Role="Group" Type="Self.Group" Multiplicity="*" />
@@ -186,9 +231,14 @@
         </Association>
         <EntityContainer Name="PEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Group" EntityType="Self.Group" />
+          <EntitySet Name="NameOfGroup" EntityType="Self.NameOfGroup" />
           <EntitySet Name="Student" EntityType="Self.Student" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
           <EntitySet Name="User" EntityType="Self.User" />
+          <AssociationSet Name="FK_Group_NameOfGroup" Association="Self.FK_Group_NameOfGroup">
+            <End Role="NameOfGroup" EntitySet="NameOfGroup" />
+            <End Role="Group" EntitySet="Group" />
+          </AssociationSet>
           <AssociationSet Name="FK_Group_Student" Association="Self.FK_Group_Student">
             <End Role="Student" EntitySet="Student" />
             <End Role="Group" EntitySet="Group" />
@@ -213,9 +263,17 @@
               <MappingFragment StoreEntitySet="Group">
                 <ScalarProperty Name="Id_Group" ColumnName="Id_Group" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
-                <ScalarProperty Name="Description" ColumnName="Description" />
                 <ScalarProperty Name="Id_StudentStarosta" ColumnName="Id_StudentStarosta" />
                 <ScalarProperty Name="Id_User" ColumnName="Id_User" />
+                <ScalarProperty Name="Id_NameOfGroup" ColumnName="Id_NameOfGroup" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="NameOfGroup">
+            <EntityTypeMapping TypeName="PracticaaModel.NameOfGroup">
+              <MappingFragment StoreEntitySet="NameOfGroup">
+                <ScalarProperty Name="Id_NameOfGroup" ColumnName="Id_NameOfGroup" />
+                <ScalarProperty Name="NAme" ColumnName="NAme" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

@@ -9,6 +9,23 @@
       Title="AddPage">
 
     <Grid>
-        
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="3*"/>
+            <ColumnDefinition Width="1*"/>
+        </Grid.ColumnDefinitions>
+        <StackPanel Grid.Column="1">
+            <Label Content="Введите имя студента:"/>
+            <TextBox x:Name="TxbName"/>
+            <Label Content="Введите фамилию студента:"/>
+            <TextBox x:Name="TxbSecondName"/>
+            <Label Content="Введите отчество студента:"/>
+            <TextBox x:Name="TxbLastName"/>
+            <Label Content="Выберите группу студента:"/>
+            <ComboBox x:Name="CmbGroup"/>
+            <Label Content="Описание студента (необязательно):"/>
+            <TextBox x:Name="TxbDescription"/>
+            <Button x:Name="BtnAdd" Content="Добавить студента" Click="Add_Click"/>
+        </StackPanel>
     </Grid>
 </Page>

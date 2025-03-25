@@ -26,6 +26,7 @@ namespace Practica
         }
     
         public virtual DbSet<Group> Group { get; set; }
+        public virtual DbSet<NameOfGroup> NameOfGroup { get; set; }
         public virtual DbSet<Student> Student { get; set; }
         public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
         public virtual DbSet<User> User { get; set; }

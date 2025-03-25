@@ -1,5 +1,4 @@
-﻿using Practica.Classes;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -17,15 +16,13 @@ using System.Windows.Shapes;
 namespace Practica.pages
 {
     /// <summary>
-    /// Логика взаимодействия для StudentsPage.xaml
+    /// Логика взаимодействия для DefaultPage.xaml
     /// </summary>
-    public partial class StudentsPage : Page
+    public partial class DefaultPage : Page
     {
-        ConnectionClass connection = new ConnectionClass();
-        public StudentsPage()
+        public DefaultPage()
         {
             InitializeComponent();
-            
         }
     }
 }
