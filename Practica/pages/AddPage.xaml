@@ -22,7 +22,7 @@
             <Label Content="Введите отчество студента:"/>
             <TextBox x:Name="TxbLastName"/>
             <Label Content="Выберите группу студента:"/>
-            <ComboBox x:Name="CmbGroup"/>
+            <ComboBox x:Name="CmbGroup" ItemsSource="{Binding NameOfGroup.NAme}"/>
             <Label Content="Описание студента (необязательно):"/>
             <TextBox x:Name="TxbDescription"/>
             <Button x:Name="BtnAdd" Content="Добавить студента" Click="Add_Click"/>

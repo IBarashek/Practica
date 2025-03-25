@@ -28,28 +28,8 @@ namespace Practica.pages
         public AddPage()
         {
             InitializeComponent();
-
-            try
-            {
-                connectionString = ConfigurationManager
-                    .ConnectionStrings[0].ConnectionString;//не разрешает подключиться к бд либо хз что не так
-                con = new SqlConnection(connectionString);
-                cmd = new SqlCommand();
-                con.Open();
-                cmd.Connection = con;
-                cmd.CommandText = "SELECT * FROM NameOfGroup";
-                dr = cmd.ExecuteReader();
-
-                while (dr.Read())
-                {
-                    CmbGroup.Items.Add(dr["NAme"]);
-                }
-                con.Close();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
+            CmbGroup.ItemsSource = connection.entities.NameOfGroup.ToList();
+            CmbGroup.DisplayMemberPath = "NAme";
         }
 
         private void Add_Click(object sender, RoutedEventArgs e)
@@ -59,13 +39,13 @@ namespace Practica.pages
                 string name = TxbName.Text;
                 string secondName = TxbSecondName.Text;
                 string lastName = TxbLastName.Text;
-                string group = CmbGroup.Text;
                 string description = TxbDescription.Text;
-                if (!String.IsNullOrEmpty(name) && !String.IsNullOrEmpty(secondName) 
-                    && !String.IsNullOrEmpty(lastName) /*&& !String.IsNullOrEmpty(group)*/)
+                if (!String.IsNullOrEmpty(name) && !String.IsNullOrEmpty(secondName)
+                    && !String.IsNullOrEmpty(lastName) && CmbGroup.SelectedItem != null)
                 {
+                    int n = CmbGroup.SelectedIndex + 1;
                     StudentClass student = new StudentClass();
-                    student.NewStudent(name, secondName, lastName, 1, description);
+                    student.NewStudent(name, secondName, lastName, n, description);
                     MessageBox.Show("Студент добавлен");
                     NavigationService.Navigate(new DefaultPage());
                 }

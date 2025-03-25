@@ -39,6 +39,7 @@ namespace Practica.pages
                     student = connection.entities.Student.Where(x =>
                     x.Id_student == number).FirstOrDefault();
                     connection.entities.Student.Remove(student);
+                    connection.entities.SaveChanges();
                     MessageBox.Show("Студент был удален");
                     NavigationService.Navigate(new DefaultPage());
                 }

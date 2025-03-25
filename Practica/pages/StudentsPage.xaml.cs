@@ -25,7 +25,7 @@ namespace Practica.pages
         public StudentsPage()
         {
             InitializeComponent();
-            
+            DgStudents.ItemsSource = connection.entities.Student.ToList(); 
         }
     }
 }

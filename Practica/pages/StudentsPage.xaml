@@ -14,9 +14,9 @@
             <ColumnDefinition Width="3*"/>
             <ColumnDefinition Width="1*"/>
         </Grid.ColumnDefinitions>
-        <DataGrid Grid.Column="1" x:Name="DgStudents" ItemsSource="{Binding Student}">
+        <DataGrid Grid.Column="1" x:Name="DgStudents">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="№" Binding="{Binding Id_Student}"/>
+                <DataGridTextColumn Header="№" Binding="{Binding Id_student}"/>
                 <DataGridTextColumn Header="Имя " Binding="{Binding Name}"/>
                 <DataGridTextColumn Header="Фамилия " Binding="{Binding SecondName}"/>
                 <DataGridTextColumn Header="Отчество" Binding="{Binding LastName}"/>
