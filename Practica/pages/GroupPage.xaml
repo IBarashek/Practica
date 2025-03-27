@@ -7,8 +7,36 @@
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="GroupPage">
-
-    <Grid>
+    <Page.Resources>
+        <Style TargetType="ListViewItem">
+            <EventSetter Event="MouseDoubleClick" Handler="ListViewItem_MouseDoubleClick"/>
+        </Style>
+    </Page.Resources>
         
+        <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="1*"/>
+        </Grid.ColumnDefinitions>
+        <StackPanel Grid.Column="1">
+            <Label Content="Дошкольное образование"/>
+            <ListView x:Name="LtvPreSchool"/>
+        </StackPanel>
+        <StackPanel Grid.Column="2">
+            <Label Content="Информационные системы и программирование"/>
+            <ListView x:Name="LtvProgramming"/>
+        </StackPanel>
+        <StackPanel Grid.Column="3">
+            <Label Content="Преподавание начальных классов"/>
+            <ListView x:Name="LtvPrepodavN"/>
+        </StackPanel>
+        <StackPanel Grid.Column="4">
+            <Label Content="Физическая культура"/>
+            <ListView x:Name="LtvPhusicalCulture"/>
+        </StackPanel>
     </Grid>
 </Page>
