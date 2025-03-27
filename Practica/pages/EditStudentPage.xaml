@@ -1,4 +1,4 @@
-﻿<Page x:Class="Practica.pages.AddPage"
+﻿<Page x:Class="Practica.pages.EditStudentPage"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -6,7 +6,7 @@
       xmlns:local="clr-namespace:Practica.pages"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
-      Title="AddPage">
+      Title="EditStudentPage">
 
     <Grid>
         <Grid.ColumnDefinitions>
@@ -22,10 +22,10 @@
             <Label Content="Введите отчество студента:"/>
             <TextBox x:Name="TxbLastName"/>
             <Label Content="Выберите группу студента:"/>
-            <ComboBox x:Name="CmbGroup" ItemsSource="{Binding Group.Name}"/>
+            <TextBox x:Name="TxbGroup"/>
             <Label Content="Описание студента (необязательно):"/>
             <TextBox x:Name="TxbDescription"/>
-            <Button x:Name="BtnAdd" Content="Добавить студента" Click="Add_Click"/>
+            <Button x:Name="BtnAdd" Content="Изменить" Click="Add_Click"/>
         </StackPanel>
     </Grid>
 </Page>

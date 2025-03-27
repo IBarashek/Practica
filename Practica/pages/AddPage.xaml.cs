@@ -21,15 +21,11 @@ namespace Practica.pages
     public partial class AddPage : Page
     {
         ConnectionClass connection = new ConnectionClass();
-        SqlConnection con;
-        SqlCommand cmd;
-        SqlDataReader dr;
-        string connectionString;
         public AddPage()
         {
             InitializeComponent();
-            CmbGroup.ItemsSource = connection.entities.NameOfGroup.ToList();
-            CmbGroup.DisplayMemberPath = "NAme";
+            CmbGroup.ItemsSource = connection.entities.Group.ToList();
+            CmbGroup.DisplayMemberPath = "Name";
         }
 
         private void Add_Click(object sender, RoutedEventArgs e)
@@ -43,7 +39,8 @@ namespace Practica.pages
                 if (!String.IsNullOrEmpty(name) && !String.IsNullOrEmpty(secondName)
                     && !String.IsNullOrEmpty(lastName) && CmbGroup.SelectedItem != null)
                 {
-                    int n = CmbGroup.SelectedIndex + 1;
+                    int aaaaa = Convert.ToInt32(CmbGroup.Text);
+                    int n = connection.entities.Group.Where(x => x.Name == aaaaa).FirstOrDefault().Id_Group;
                     StudentClass student = new StudentClass();
                     student.NewStudent(name, secondName, lastName, n, description);
                     MessageBox.Show("Студент добавлен");

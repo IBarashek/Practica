@@ -24,5 +24,17 @@ namespace Practica.pages
         {
             InitializeComponent();
         }
+
+        private void Edit_click(object sender, RoutedEventArgs e)
+        {
+            if(!String.IsNullOrEmpty(TxbNumberOfStudent.Text))
+            {
+                NavigationService.Navigate(new EditStudentPage(Convert.ToInt32(TxbNumberOfStudent.Text)));
+            }
+            else
+            {
+                MessageBox.Show("Введите номер студента");
+            }
+        }
     }
 }

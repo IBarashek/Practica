@@ -87,6 +87,9 @@
     <Compile Include="pages\DefaultPage.xaml.cs">
       <DependentUpon>DefaultPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="pages\EditStudentPage.xaml.cs">
+      <DependentUpon>EditStudentPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Student.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -129,6 +132,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="pages\EditPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="pages\EditStudentPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

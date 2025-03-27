@@ -48,7 +48,7 @@ namespace Practica.pages
                     MessageBox.Show("Поле не заполнено");
                 }
             }
-            catch (Exception ex)
+            catch
             {
                 MessageBox.Show("Такого студента не существует");
             }
